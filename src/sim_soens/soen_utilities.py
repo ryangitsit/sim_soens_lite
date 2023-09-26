@@ -238,7 +238,7 @@ def dend_save_rate_array(params,ib__list,phi_r__array,r_fq__array,i_di__array):
         data_array['i_di__array'] = i_di__array
         
     print('\n\nsaving session data ...\n\n')    
-    _path = pathfinder()
+    _path = '/src/'
     tt = time.time()             
     # with open('soen_sim_data/{}__{}.soen'.format(save_string,time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(tt))), 'wb') as data_file:
     #     pickle.dump(data_array, data_file) 
@@ -263,7 +263,7 @@ def pathfinder():
 
 def dend_load_rate_array(load_string):
 
-    _path = pathfinder()
+    _path = '/src/'
 
     if load_string == 'default' or load_string == 'default_ri':
         # _load_string = 'ra_dend_ri__beta_c_0.3000__beta_1_01.5708__beta_2_01.5708__beta_di_6.28319e+03__tau_di_long__ib_i_1.3673__ib_f_2.0673__d_ib_0.050__d_phi_r_0.0100__working_master'
@@ -294,7 +294,7 @@ def dend_load_rate_array(load_string):
 
 def dend_load_thresholds_saturations(load_string):
 
-    _path = pathfinder()
+    _path = '/src/'
 
     if load_string == 'default' or load_string == 'default_ri':
         _load_string = 'ra_dend_ri__beta_c_0.3000__beta_1_01.5708__beta_2_01.5708__beta_di_6.28319e+03__tau_di_long__ib_i_1.3524__ib_f_2.0524__d_ib_0.050__d_phi_r_0.0025__thresholds_saturations'

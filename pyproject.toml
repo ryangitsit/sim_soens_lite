@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sim_soens_lite"
-version = "0.4.1"
-description = "Single class automated annotation tool using OpenCV"
+version = "0.0.1"
+description = "Simulator for Superconducting Optoelectronic Networks"
 readme = "README.md"
-authors = [{ name = "Kukil Kashyap Borgohain, LearnOpenCV", email = "kukilp213@gmail.com" }]
+authors = [{ name = "Ryan", email = "rmoloughlin11@gmail.com" }]
 license = { file = "LICENSE" }
 classifiers = [
     "Development Status :: 3 - Alpha",
