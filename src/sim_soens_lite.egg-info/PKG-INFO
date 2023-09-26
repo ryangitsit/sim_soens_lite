@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: sim-soens-lite
+Version: 0.4.1
+Summary: Single class automated annotation tool using OpenCV
+Author-email: "Kukil Kashyap Borgohain, LearnOpenCV" <kukilp213@gmail.com>
+Project-URL: Homepage, https://github.com/ryangitsit/sim_soens_lite
+Keywords: optoelectronics
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+Requires-Dist: numpy

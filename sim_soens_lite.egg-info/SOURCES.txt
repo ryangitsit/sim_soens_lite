@@ -1,0 +1,6 @@
+setup.py
+sim_soens_lite.egg-info/PKG-INFO
+sim_soens_lite.egg-info/SOURCES.txt
+sim_soens_lite.egg-info/dependency_links.txt
+sim_soens_lite.egg-info/not-zip-safe
+sim_soens_lite.egg-info/top_level.txt

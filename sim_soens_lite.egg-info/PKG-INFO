@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: sim-soens-lite
+Version: 0.1
+Summary: simulator for superconducting optoelectronic network
+Home-page: https://github.com/ryangitsit/sim_soens_lite
+Author: Ryan O'Loughlin
+Author-email: rmoloughlin11@gmail.com
+License: NIST
