@@ -1,3 +1,6 @@
+LICENSE
+MANIFEST.in
+README.md
 pyproject.toml
 setup.py
 src/sim_soens/__init__.py
@@ -15,6 +18,10 @@ src/sim_soens/super_library.py
 src/sim_soens/super_net.py
 src/sim_soens/super_node.py
 src/sim_soens/soen_sim_data/__init__.py
+src/sim_soens/soen_sim_data/rate_array_default.soen
+src/sim_soens/soen_sim_data/rate_array_default_thresholds_saturations.soen
+src/sim_soens/soen_sim_data/source_ec_Nph_1.0e+04.soen
+src/sim_soens/soen_sim_data/source_qd_Nph_1.0e+04.soen
 src/sim_soens_lite.egg-info/PKG-INFO
 src/sim_soens_lite.egg-info/SOURCES.txt
 src/sim_soens_lite.egg-info/dependency_links.txt

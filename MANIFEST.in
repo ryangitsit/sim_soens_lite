@@ -1,0 +1,12 @@
+include src/sim_soens/soen_sim_data/ *
+include src/sim_soens/ *
+include src/sim_soens/soen_sim_data/rate_array_default_thresholds_saturations.soen
+include src/sim_soens/rate_array_default_thresholds_saturations.soen
+include src/sim_soens/sim_soens/*.txt
+include src/sim_soens/sim_soens/*.soen
+include src/sim_soens/soen_sim_data/*.soen
+include src/sim_soens/*.soen
+include src/sim_soens/soen_sim_data/*.pickle
+include src/sim_soens/*.pickle
+include src/sim_soens/soen_sim_data/*.pkl
+include src/sim_soens/*.pkl

@@ -288,15 +288,20 @@ def transmitter_initialization(neuron_object,t_tau_conversion):
     if neuron_object.source_type == 'qd' or neuron_object.source_type == 'ec':
     
         from sim_soens.soen_utilities import pathfinder
-        _path = '/src/'
+        _path = '/src'
         
         if neuron_object.source_type == 'qd':
             load_string = 'source_qd_Nph_1.0e+04'
         elif neuron_object.source_type == 'ec':
             load_string = 'source_ec_Nph_1.0e+04'
+
+        import os
+        this_dir, this_filename = os.path.split(__file__)  # Get path of data.pkl
+        data_path = os.path.join(this_dir, 'soen_sim_data',f'{load_string}.soen')
+        data_dict_imported = pickle.load(open(data_path, 'rb'))
             
-        with open(f'{_path}/soen_sim_data/{load_string}.soen', 'rb') as data_file:         
-            data_dict_imported = pickle.load(data_file) 
+        # with open(f'{_path}/soen_sim_data/{load_string}.soen', 'rb') as data_file:         
+        #     data_dict_imported = pickle.load(data_file) 
             
         time_vec__el = data_dict_imported['time_vec']#*t_tau_conversion
         el_vec = data_dict_imported['dNphdt']
