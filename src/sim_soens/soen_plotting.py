@@ -5,6 +5,7 @@ from matplotlib.collections import PolyCollection
 import matplotlib as mp
 import pickle
 from itertools import cycle
+import seaborn as sns
 
 from .soen_utilities import (
     depth_of_dendritic_tree, 
@@ -277,7 +278,8 @@ def arbor_activity(
      - syntax
         -> SuperNode.plot_arbor_activity(net,phir=True)
     '''
-    plt.style.use('seaborn-muted')
+    # plt.style.use('seaborn-muted')
+    sns.color_palette("muted")
     # print(plt.__dict__['pcolor'].__doc__)
     colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
     
@@ -407,7 +409,8 @@ def structure(node):
     # # color_map = cm.get_cmap('viridis', 3)
     # color_map = cm.get_cmap('tab10', 8)
     
-    plt.style.use('seaborn-muted')
+    # plt.style.use('seaborn-muted')
+    sns.color_palette("muted")
     # print(plt.__dict__['pcolor'].__doc__)
     colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 

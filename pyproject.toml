@@ -20,7 +20,13 @@ keywords = ["optoelectronics",
 	    ]
 dependencies = [
     "numpy",
-    "matplotlib"
+    "matplotlib",
+    "seaborn",
+    "networkx",
+    "keras",
+    "scikit-learn",
+    "tensorflow",
+    "brian2"
 ]
 requires-python = ">=3.5"
 
