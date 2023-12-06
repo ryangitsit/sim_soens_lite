@@ -12,7 +12,7 @@ Enjoy!
 ## Getting Started
  - Clone this repo
    - Type the following in the command line of your desired local directory
-   - `git clone https://github.com/ryangitsit/sim_soens.git` 
+   - `git clone https://github.com/ryangitsit/sim_soens_lite.git` 
  - Be sure to have the necessary python packages with the following commands
    - `pip install -r requirements.txt` 
  - Open `NICE_tutorial` for a simulator walkthrough 

@@ -436,11 +436,11 @@ class SuperNode():
                             return
                         
     def plot_arbor_activity(self,net,**kwargs):
-        from sim_soens.soen_plotting import arbor_activity
+        from sim_soens_lite.soen_plotting import arbor_activity
         arbor_activity(self,net,**kwargs)
 
     def plot_structure(self):
-        from sim_soens.soen_plotting import structure
+        from sim_soens_lite.soen_plotting import structure
         structure(self)
 
     def plot_neuron_activity(self,**kwargs):
@@ -459,5 +459,5 @@ class SuperNode():
             - path       -> save plot to path
             
         '''
-        from sim_soens.soen_plotting import activity_plot
+        from sim_soens_lite.soen_plotting import activity_plot
         activity_plot([self],**kwargs)

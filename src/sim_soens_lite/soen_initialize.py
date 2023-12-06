@@ -287,7 +287,7 @@ def transmitter_initialization(neuron_object,t_tau_conversion):
     
     if neuron_object.source_type == 'qd' or neuron_object.source_type == 'ec':
     
-        from sim_soens.soen_utilities import pathfinder
+        from sim_soens_lite.soen_utilities import pathfinder
         _path = '/src'
         
         if neuron_object.source_type == 'qd':

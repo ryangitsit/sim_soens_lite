@@ -13,7 +13,7 @@ from .soen_initialize import (
     dendrite_data_attachment
 )
 
-# from sim_soens.soen_utilities import dend_load_rate_array
+# from sim_soens_lite.soen_utilities import dend_load_rate_array
 # load_string = 'default_ri'
 # ib__list, phi_r__array, i_di__array, r_fq__array, _, _ = dend_load_rate_array(load_string)
 
@@ -50,7 +50,7 @@ def run_soen_sim(net):
         # run the simulation one time step at a time
         if net.backend == 'julia':
             # print('julia')
-            from sim_soens.soen_initialize import make_subarrays
+            from sim_soens_lite.soen_initialize import make_subarrays
             
             # if net.print_times: print("-------------------------\n\n")
             start = time.perf_counter()
@@ -272,7 +272,7 @@ def net_step(net,tau_vec,d_tau):
             # update all output synapses
             output_synapse_updater(neuron,ii,tau_vec[ii+1])
             
-            neuron = spike(neuron,ii,tau_vec)
+            neuron = spike(neuron,ii,tau_vec,net.time_params['dt'])
                        
     if net.timer==True:
         _t1 = time.time()
@@ -280,7 +280,7 @@ def net_step(net,tau_vec,d_tau):
         
     return net
 
-def spike(neuron,ii,tau_vec):
+def spike(neuron,ii,tau_vec,dt):
     # check if neuron integration loop has increased above threshold
     if neuron.dend_soma.s[ii+1] >= neuron.integrated_current_threshold:
         
@@ -337,7 +337,7 @@ def spike(neuron,ii,tau_vec):
                 val = tau_vec[ii+1] + np.min(
                     syn_out[synapse_name].photon_delay_times__temp
                     )
-                _ind = closest_index(lst,val)
+                _ind = tau_vec[ii+10/dt] #closest_index(lst,val)
                 # a prior spd event has occurred at this synapse                        
                 if len(syn_out[synapse_name].spike_times_converted) > 0:
                     # the spd has had time to recover 

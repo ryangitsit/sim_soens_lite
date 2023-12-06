@@ -370,7 +370,7 @@ class SuperNet:
         self.net.simulate()
 
     def raster_plot(self):
-        from sim_soens.soen_plotting import raster_plot
+        from sim_soens_lite.soen_plotting import raster_plot
         raster_plot(self.net.spikes)
 
 

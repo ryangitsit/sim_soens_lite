@@ -214,7 +214,7 @@ def plot_letters(letters):
     plt.show()
 
 def make_inputs(letters,spike_time):
-    from sim_soens.super_input import SuperInput
+    from sim_soens_lite.super_input import SuperInput
     # make the input spikes for different letters
     inputs = []
     for name, pixels in letters.items():

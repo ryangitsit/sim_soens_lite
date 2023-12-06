@@ -717,7 +717,7 @@ class NeuralZoo():
             - path       -> save plot to path
             
         '''
-        from sim_soens.soen_plotting import activity_plot
+        from sim_soens_lite.soen_plotting import activity_plot
         activity_plot([self],net,**kwargs)
 
 
@@ -944,7 +944,7 @@ class NeuralZoo():
             - Star is cell body
             - Dots are dendrites
         '''
-        from sim_soens.soen_plotting import structure
+        from sim_soens_lite.soen_plotting import structure
         structure(self)
 
     def plot_arbor_activity(self,net,**kwargs):
@@ -953,5 +953,5 @@ class NeuralZoo():
         - syntax
             -> NeuralZoo.plot_arbor_activity(net,phir=True)
         '''
-        from sim_soens.soen_plotting import arbor_activity
+        from sim_soens_lite.soen_plotting import arbor_activity
         arbor_activity(self,net,**kwargs)

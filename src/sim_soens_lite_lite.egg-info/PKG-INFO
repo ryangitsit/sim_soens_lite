@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
-Name: sim-soens-lite
+Name: sim-soens-lite-lite
 Version: 0.0.1
 Summary: Simulator for Superconducting Optoelectronic Networks
 Author-email: Ryan <rmoloughlin11@gmail.com>
-Project-URL: Homepage, https://github.com/ryangitsit/sim_soens_lite
+Project-URL: Homepage, https://github.com/ryangitsit/sim_soens_lite_lite
 Keywords: optoelectronics
 Classifier: Development Status :: 3 - Alpha
 Classifier: Operating System :: OS Independent
@@ -30,7 +30,7 @@ Enjoy!
 ## Getting Started
  - Clone this repo
    - Type the following in the command line of your desired local directory
-   - `git clone https://github.com/ryangitsit/sim_soens.git` 
+   - `git clone https://github.com/ryangitsit/sim_soens_lite.git` 
  - Be sure to have the necessary python packages with the following commands
    - `pip install -r requirements.txt` 
  - Open `NICE_tutorial` for a simulator walkthrough 

@@ -219,6 +219,6 @@ class SuperInput():
         return stream
     
     def plot(self,**kwargs):
-        from sim_soens.soen_plotting import raster_plot
+        from sim_soens_lite.soen_plotting import raster_plot
         raster_plot(self.spike_arrays,**kwargs)
 

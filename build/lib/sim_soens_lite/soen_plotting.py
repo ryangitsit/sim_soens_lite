@@ -95,7 +95,7 @@ def activity_plot(
 
             if phir==True:
                 if phi_th == True:
-                    from sim_soens.soen_functions import phi_thresholds
+                    from sim_soens_lite.soen_functions import phi_thresholds
                     phi_ths = phi_thresholds(n.neuron)
                     axs[ii].axhline(
                         y = phi_ths[1], color = 'purple', 
@@ -200,7 +200,7 @@ def activity_plot(
 
         if phir:
             if phi_th == True:
-                from sim_soens.soen_functions import phi_thresholds
+                from sim_soens_lite.soen_functions import phi_thresholds
                 phi_ths = phi_thresholds(neurons[0].neuron)
                 plt.axhline(y = phi_ths[1], color = 'purple', linestyle = '--',
                             linewidth=.5,label=r"$\phi_{th}$")

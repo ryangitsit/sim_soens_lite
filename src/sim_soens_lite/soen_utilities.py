@@ -238,7 +238,7 @@ def omega_LRC(L,R,C):
     #     data_array['i_di__array'] = i_di__array
         
     # print('\n\nsaving session data ...\n\n')    
-    # _path = 'sim_soens/'
+    # _path = 'sim_soens_lite/'
     # tt = time.time()             
     # # with open('soen_sim_data/{}__{}.soen'.format(save_string,time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime(tt))), 'wb') as data_file:
     # #     pickle.dump(data_array, data_file) 
@@ -257,19 +257,19 @@ def pathfinder():
     #     print(d)
     for _str in sys.path:
         # print(_str)
-        dir_index = _str.find("sim_soens")
-        if _str[dir_index:dir_index+9] == 'sim_soens':
+        dir_index = _str.find("sim_soens_lite")
+        if _str[dir_index:dir_index+9] == 'sim_soens_lite':
             path = _str.replace('\\','/')[:dir_index+9] +'/'
             break
         else:
-            path = os.getcwd()+'/sim_soens'
+            path = os.getcwd()+'/sim_soens_lite'
     return path
 
 def dend_load_rate_array(load_string):
 
     
     import os
-    # _path = os.path.join(sys.path[-1], 'sim_soens\\')
+    # _path = os.path.join(sys.path[-1], 'sim_soens_lite\\')
 
     # if load_string == 'default' or load_string == 'default_ri':
     #     _load_string = 'rate_array_default'
@@ -299,7 +299,7 @@ def dend_load_rate_array(load_string):
 def dend_load_thresholds_saturations(load_string):
 
     import os
-    # _path = os.path.join(sys.path[-1], 'sim_soens')
+    # _path = os.path.join(sys.path[-1], 'sim_soens_lite')
 
     # if load_string == 'default' or load_string == 'default_ri':
     #     # _load_string = 'ra_dend_ri__beta_c_0.3000__beta_1_01.5708__beta_2_01.5708__beta_di_6.28319e+03__tau_di_long__ib_i_1.3524__ib_f_2.0524__d_ib_0.050__d_phi_r_0.0025__thresholds_saturations'
