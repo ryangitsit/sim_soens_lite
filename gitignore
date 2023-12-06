@@ -26,7 +26,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 src/*.egg-info/
-src/sim_soens_lite.egg-info/
+src/sim_soens_lite_lite.egg-info/
 
 
 # PyInstaller

@@ -1,3 +1,27 @@
+Metadata-Version: 2.1
+Name: sim-soens-lite-lite
+Version: 0.0.1
+Summary: Simulator for Superconducting Optoelectronic Networks
+Author-email: Ryan <rmoloughlin11@gmail.com>
+Project-URL: Homepage, https://github.com/ryangitsit/sim_soens_lite_lite
+Keywords: optoelectronics
+Classifier: Development Status :: 3 - Alpha
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: networkx
+Requires-Dist: keras
+Requires-Dist: scikit-learn
+Requires-Dist: tensorflow
+Requires-Dist: brian2
+
 # Superconducting Optoelectronic Network Simulator
 ![plot](./img/wafer_tilted.png)
 Superconducting Optoelectronic Networks (SOENs) are an in-development neuromorphic hardware that offer *lightspeed communication* and *brain-level scalability*.\
