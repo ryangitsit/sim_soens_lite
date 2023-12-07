@@ -9,7 +9,7 @@ required = [
     "keras",
     "scikit-learn",
     "tensorflow",
-    'markupsafe',
+    "markupsafe",
     "brian2"
 ]
 
