@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
-Name: sim-soens-lite-lite
+Name: sim-soens-lite
 Version: 0.0.1
 Summary: Simulator for Superconducting Optoelectronic Networks
 Author-email: Ryan <rmoloughlin11@gmail.com>
-Project-URL: Homepage, https://github.com/ryangitsit/sim_soens_lite_lite
+Project-URL: Homepage, https://github.com/ryangitsit/sim_soens_lite
 Keywords: optoelectronics
 Classifier: Development Status :: 3 - Alpha
 Classifier: Operating System :: OS Independent
@@ -20,6 +20,7 @@ Requires-Dist: networkx
 Requires-Dist: keras
 Requires-Dist: scikit-learn
 Requires-Dist: tensorflow
+Requires-Dist: markupsafe
 Requires-Dist: brian2
 
 # Superconducting Optoelectronic Network Simulator

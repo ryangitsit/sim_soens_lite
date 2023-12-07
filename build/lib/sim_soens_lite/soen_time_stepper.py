@@ -239,24 +239,11 @@ def net_step(net,tau_vec,d_tau):
             - add spikes to neuron
             - send spikes to downstream neuron in the form of new input
     '''   
-    if "hardware" in net.__dict__.keys():
-        print("Hardware in the loop.")
-        HW = net.hardware
-        HW.conversion = net.time_params['t_tau_conversion']
-    else:
-        # print("No hardware in the loop.")
-        net.hardware=None
-        HW=None
     if net.timer==True:
         _t0 = time.time()
     # print(tau_vec)
     for ii in range(len(tau_vec)-1):
 
-        if net.hardware:
-            # print("BACKWARD ERROR")
-            if ii == HW.check_time/net.dt:
-                HW.forward_error(net.nodes)
-                HW.backward_error(net.nodes)
             
         # step through neurons
         for node in net.nodes:
@@ -267,7 +254,7 @@ def net_step(net,tau_vec,d_tau):
             for dend in node.dendrite_list:
                 # if hasattr(dend,'is_soma') and dend.threshold_flag == True:
                     
-                dendrite_updater(dend,ii,tau_vec[ii+1],d_tau,HW)
+                dendrite_updater(dend,ii,tau_vec[ii+1],d_tau)
 
             # update all output synapses
             output_synapse_updater(neuron,ii,tau_vec[ii+1])
@@ -337,22 +324,24 @@ def spike(neuron,ii,tau_vec,dt):
                 # val = tau_vec[ii+1] + np.min(
                 #     syn_out[synapse_name].photon_delay_times__temp
                 #     )
-                _ind = tau_vec[ii+10/dt] #closest_index(lst,val)
-                # a prior spd event has occurred at this synapse                        
-                if len(syn_out[synapse_name].spike_times_converted) > 0:
-                    # the spd has had time to recover 
-                    if (tau_vec[_ind] - syn_out[synapse_name].spike_times_converted[-1] >= 
-                        syn_out[synapse_name].spd_reset_time_converted):                               
+                _ind = int(ii+10/dt)#closest_index(lst,val)
+                if _ind < len(tau_vec)-1:
+
+                    # a prior spd event has occurred at this synapse                        
+                    if len(syn_out[synapse_name].spike_times_converted) > 0:
+                        # the spd has had time to recover 
+                        if (tau_vec[_ind] - syn_out[synapse_name].spike_times_converted[-1] >= 
+                            syn_out[synapse_name].spd_reset_time_converted):                               
+                            syn_out[synapse_name].spike_times_converted = np.append(
+                                syn_out[synapse_name].spike_times_converted,
+                                tau_vec[_ind]
+                                )
+                    # a prior spd event has not occurred at this synapse
+                    else: 
                         syn_out[synapse_name].spike_times_converted = np.append(
                             syn_out[synapse_name].spike_times_converted,
                             tau_vec[_ind]
                             )
-                # a prior spd event has not occurred at this synapse
-                else: 
-                    syn_out[synapse_name].spike_times_converted = np.append(
-                        syn_out[synapse_name].spike_times_converted,
-                        tau_vec[_ind]
-                        )
                                         
         elif neuron.source_type == 'delay_delta':
             lst = tau_vec[:]
@@ -366,7 +355,7 @@ def spike(neuron,ii,tau_vec,dt):
                 
     return neuron
 
-def dendrite_updater(dend_obj,time_index,present_time,d_tau,HW=None):
+def dendrite_updater(dend_obj,time_index,present_time,d_tau):
     
     # make sure dendrite isn't a soma that reached threshold
     if hasattr(dend_obj, 'is_soma'):
@@ -461,39 +450,6 @@ def dendrite_updater(dend_obj,time_index,present_time,d_tau,HW=None):
     #     if dend_obj.ib_ramp == True:
     #         new_bias= 1.4 + (dend_obj.ib_max-1.4)*time_index/dend_obj.time_steps
 
-    if HW:
-
-        if 'trace' not in dend_obj.name:
-
-            for trace in HW.traces:
-                if dend_obj.name == list(trace.dendritic_inputs.keys())[0]:
-
-
-                    if "minus" in trace.name:
-                        if trace.s[time_index] > 0:
-                            new_bias = (
-                                1-trace.s[time_index]
-                                ) * (dend_obj.ib_max-.99) + HW.baseline
-                        # if time_index == 2500 or time_index == 7500: 
-                        #     print("minus",trace.name,dend_obj.name,new_bias)
-
-                    elif "plus" in trace.name:
-                        if trace.s[time_index] > 0:
-                            new_bias = trace.s[time_index] * (
-                                dend_obj.ib_max-.99
-                                ) + HW.baseline
-                        # if time_index == 2500 or time_index == 7500: 
-                        #     print("plus",trace.name,dend_obj.name,new_bias)
-
-                # if (time_index == 2500 or time_index == 7500): 
-                    # print("BIAS: ",dend_obj.name,new_bias)
-
-                dend_obj.bias_current = new_bias
-                HW.trace_biases[trace.name].append(new_bias)
-
-        # track how bias changes over time
-        dend_obj.bias_dynamics.append(new_bias)
-
     # find appropriate rate array indices
     lst = dend_obj.phi_r__vec[:] # old way
     # lst = np.asarray(phi_r__array[dend_obj._ind__ib])[:] # new way
@@ -532,18 +488,9 @@ def dendrite_updater(dend_obj,time_index,present_time,d_tau,HW=None):
 
     # i_di__vec = np.asarray(np.asarray(i_di__array[dend_obj._ind__ib],dtype=object)[_ind__phi_r]) # new way
 
-    if dend_obj.pri == True:
-        lst = i_di__vec[:]
-        val = 2.7 - dend_obj.bias_current + dend_obj.s[time_index]
-        _ind__s = closest_index(lst,val)
-    # elif dend_obj.loops_present=='ri':
-    #     lst = i_di__vec[:]
-    #     val = (dend_obj.ib_max-new_bias+dend_obj.s[time_index])
-    #     _ind__s = closest_index(lst,val)
-    else:
-        lst =i_di__vec[:]
-        val = dend_obj.s[time_index]
-        _ind__s = closest_index(lst,val)
+    lst =i_di__vec[:]
+    val = dend_obj.s[time_index]
+    _ind__s = closest_index(lst,val)
         
     dend_obj.ind_phi.append(_ind__phi_r) # temp
     dend_obj.ind_s.append(_ind__s) # temp

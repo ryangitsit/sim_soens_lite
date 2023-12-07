@@ -5,4 +5,5 @@ networkx
 keras
 scikit-learn
 tensorflow
+markupsafe
 brian2
